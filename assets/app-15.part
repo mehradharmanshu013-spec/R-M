@@ -28,10 +28,10 @@ const all=Object.keys(POS).filter(x=>POS[x].n==P.n),tt=all.reduce((s,x)=>s+POS[x
 $("vt").textContent="Purchase Order PO-"+k+" · "+P.br;
 $("vc").innerHTML="Tracker: #"+r.n+" · "+r.b+" · Qtn "+r.q+" · ₹"+f(r.a)+"<br>This PO: ₹"+f(P.t)+(all.length>1?" · All POs ("+all.map(x=>x).join(" + ")+"): ₹"+f(tt):"")+(ok||P.x?"":" · <span class='bad'>✗ Amount does not match</span>")+(P.x?"<br>"+P.x:"");
 pg(P,"PO")}
+const appRoot = document.getElementById("quote-dashboard");
 appRoot.addEventListener("click",e=>{const p=e.target.closest("[data-p]"),o=e.target.closest("[data-o]"),a=e.target.closest("[data-a]"),c=e.target.closest("[data-c]"),b=e.target.closest("[data-b]");if(b)openB(b.dataset.b);else if(c)openC(c.dataset.c);else if(a)openA(a.dataset.a);else if(p)openP(p.dataset.p);else if(o)openV(o.dataset.o);else if(e.target===vw)closeV()});
 document.getElementById("vx").onclick=closeV;document.addEventListener("keydown",e=>{if(e.key=="Escape")closeV()});
 
-const appRoot = document.getElementById("quote-dashboard");
 const f=n=>Math.round(n).toLocaleString("en-IN"),inr=n=>"₹"+f(n),
   $=id=>appRoot.querySelector("#"+CSS.escape(id));
 const ST={D:["PO done","--c2"],A:["Approved, no PO","--c1"],P:["Pending PO","--c4"],Q:["Pending approval","--c3"],R:["PR raised","--c6"],N:["No status","--c5"]},SK=Object.keys(ST);
