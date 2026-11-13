@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VD Work – Quote Status Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="quote-dashboard">
+<div id="vw" role="dialog" aria-modal="true" aria-label="Document viewer"><div class="bx"><div class="tp"><div style="margin:0"><b id="vt"></b><div id="vc"></div></div><div class="ac"><button id="vx">Close</button></div></div><div id="vf"></div></div></div>
+<div class="wrap">
+<header><div><h1>Quote Status Dashboard</h1><div class="sub">VD Work · quotations, approvals, POs, work, billing &amp; payments</div></div>
+<div style="display:flex;gap:8px"><button class="ghost" id="reset">Reset filters</button><button class="ghost" id="th" title="Switch light / dark">◐</button></div></header>
+<button class="ghost" id="ft" data-action="toggle-filters">⚙ Filters</button>
+<div class="card filters">
+<label>Search<input id="q" placeholder="Branch, qtn no, PO…"></label>
+<label>Status<select id="fStage"></select></label>
+<label>Location<select id="fLoc"></select></label>
+<label>Type<select id="fType"></select></label>
+<label>Work<select id="fWork"></select></label>
+<label>Billing<select id="fBill"><option value="">All billing</option><option value="none">Not billed</option><option value="In process">Bill in process</option><option value="Pending">Bill pending</option></select></label>
+<label>Payment<select id="fPay"><option value="">All payments</option><option value="Y">Paid</option><option value="U">Billed, not paid</option></select></label>
+<label>Quote from<input type="date" id="dFrom"></label>
+<label>Quote to<input type="date" id="dTo"></label>
+</div>
+<div class="tabs" id="mo"></div>
+<div class="twrap" id="kpis"></div>
+<div class="grid">
+<div class="card g4"><h2>Value by status</h2><div class="ch"><canvas id="cStage"></canvas></div></div>
+<div class="card g8"><h2>Value by location</h2><div class="ch"><canvas id="cLoc"></canvas></div></div>
+<div class="card g8"><h2>Quotation value by date</h2><div class="ch"><canvas id="cTime"></canvas></div></div>
+<div class="card g4"><h2>Work &amp; billing status (value, # quotes)</h2><div class="ch"><canvas id="cFunnel"></canvas></div></div>
+</div>
+<div class="card"><h2>Quotations <span id="cnt" style="color:var(--muted);font-weight:400"></span></h2>
+<div class="tw"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div><div class="cards" id="cards"></div></div>
+</div>
+<script src="app.js" defer></script>
+</div>
+</body>
+</html>
